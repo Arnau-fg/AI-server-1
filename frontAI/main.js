@@ -18,7 +18,7 @@ let utf8decoder = new TextDecoder();
 // Fetching a stream of data asynchronously using the 'fetchNode' function
 const stream = await fetchNode();
 
-// Iterating over the stream of data asynchronously, processing each chunk
+// Iterating over the stream of data asynchronously, processing each chunk, stream.body is required, because the chunk data is stored in the body attribute
 for await (const chunk of stream.body) {
 
   // Decoding the chunk of data from UTF-8 encoding to a string

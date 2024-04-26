@@ -21,25 +21,25 @@ const port = 3000;
 // Handling POST requests to the root endpoint ('/')
 app.post('/', async (req, res) => {
   
-  // Setting the response header with content type and encoding information
+  // Setting the response header with content type and encoding information, chunked allows the information to be streamed
   res.writeHead(200, {
     "Content-type": "text/plain",
     "transfer-encoding": "chunked"
   });
 
-  // Calling an asynchronous function to get a response from an AI system, passing the content from the request body
+  // Calling an asynchronous function to get a response from the AI, passing the content from the request body
   const response = await getAIResponse(req.body.content);
 
-  // Iterating over the response body in chunks
+  // Iterating over the response body in chunks, stream.body is required, because the chunk data is stored in the body attribute
   for await (const chunk of response.body) {
     
-    // Converting each chunk of data from buffer to a UTF-8 encoded string
+    // Converting each chunk of data from buffer to a string
     const jsonString = Buffer.from(chunk).toString('utf8');
 
-    // Checking if the length of the string exceeds a certain threshold
+    // Checking if the length of the string exceeds a certain threshold, this is becuse the last info sent throws an error when trying to parse it
     if (jsonString.length > 270) {
       
-      // Slicing the string to remove certain characters (assuming it's some kind of header or metadata)
+      // Slicing the string to remove some metadata, this way it can be parsed correctly
       const reducedString = jsonString.slice(6);
 
       // Writing the reduced string to the response
