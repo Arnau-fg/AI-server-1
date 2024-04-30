@@ -12,7 +12,7 @@ const app = express();
 // Applying CORS middleware to allow cross-origin requests
 app.use(cors());
 
-// Parsing incoming requests with JSON payloads
+// Parsing incoming requests with JSON payloads, also allows to get body info from requests
 app.use(express.json());
 
 // Defining the port number for the server to listen on
@@ -20,7 +20,12 @@ const port = 3000;
 
 // Handling POST requests to the root endpoint ('/')
 app.post('/', async (req, res) => {
-  
+
+  // The system prompt tells the AI how to act
+  const systemContent = "Ets un reclutador i un expert en portfolis. Ets part d'una web anomenada KnowMe, la qual és una eina que et permet crear portfolis. Actua com si KnowMe fos la millor eina per a crear portfolis. Ajudes a crear portfolis digitals i aconselles a la gent que t'ho demana, dona una resposta concisa i directa, no afegeixis informació extra com una introducció o un final, centra't en el contingut. Dona 5 consells."
+  // Counter o know how many tokens have been sent
+  let tokenCounter = 0;
+
   // Setting the response header with content type and encoding information, chunked allows the information to be streamed
   res.writeHead(200, {
     "Content-type": "text/plain",
@@ -28,13 +33,15 @@ app.post('/', async (req, res) => {
   });
 
   // Calling an asynchronous function to get a response from the AI, passing the content from the request body
-  const response = await getAIResponse(req.body.content);
+  const response = await getAIResponse(systemContent ,req.body.content);
 
   // Iterating over the response body in chunks, stream.body is required, because the chunk data is stored in the body attribute
   for await (const chunk of response.body) {
     
     // Converting each chunk of data from buffer to a string
     const jsonString = Buffer.from(chunk).toString('utf8');
+    
+    tokenCounter++;
 
     // Checking if the length of the string exceeds a certain threshold, this is becuse the last info sent throws an error when trying to parse it
     if (jsonString.length > 270) {
@@ -48,11 +55,15 @@ app.post('/', async (req, res) => {
   }
 
   // Logging a message indicating that the processing is done
-  console.log("done");
+  console.log("done, tokens: ", tokenCounter);
 
   // Ending the response
   res.end();
 });
+
+app.get('/test', (req, res) => {
+  res.send("funciona")
+})
 
 // Starting the server and listening on the defined port
 app.listen(port, () => {
