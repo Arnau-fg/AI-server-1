@@ -1,0 +1,26 @@
+[
+  {
+    "type": "ImageComponent",
+    "content": "ImageComponent"
+  },
+  {
+    "type": "TitleComponent",
+    "content": "Hey, Soy Loris Crisafo Norte"
+  },
+  {
+    "type": "LinksComponent",
+    "content": ["Github", "Linkedin", "CV"]
+  },
+  {
+    "type": "VideoComponent",
+    "content": "VideoComponent"
+  },
+  {
+    "type": "TitleComponent",
+    "content": "Experiencia"
+  },
+  {
+    "type": "TextComponent",
+    "content": "Como desarrollador de software, he tenido el privilegio de sumergirme en un mundo de creatividad, lógica y resolución de problemas. Desde que escribí mi primera línea de código, he estado inmerso en un viaje emocionante y gratificante."
+  }
+]
