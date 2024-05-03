@@ -22,4 +22,4 @@ Response:
 
 Upgrade reasoning:
 
-Bona resposta, més proves necessitades, la següent si que serà amb Phi-3, a partir d'ara hi haurà un apartat de model
+Bona resposta, més proves necessitades

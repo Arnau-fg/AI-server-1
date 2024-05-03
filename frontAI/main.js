@@ -30,6 +30,7 @@ console.log(sendData);
 
 // Initializing an empty string variable to store the message
 let message = "";
+let showMessage = "";
 
 const textDOM = document.getElementById("data");
 
@@ -37,10 +38,10 @@ const textDOM = document.getElementById("data");
 let utf8decoder = new TextDecoder();
 
 // Fetching a stream of data asynchronously using the 'fetchGeneric' function
-// const stream = await fetchGeneric(categories);
+const stream = await fetchGeneric(categories);
 
 // Fetching a stream of data asynchronously using the 'fetchGenericWithInfo' function
-const stream = await fetchGenericWithInfo(sendData, sendCategories);
+// const stream = await fetchGenericWithInfo(sendData, sendCategories);
 
 // Iterating over the stream of data asynchronously, processing each chunk, stream.body is required, because the chunk data is stored in the body attribute
 for await (const chunk of stream.body) {
@@ -53,8 +54,10 @@ for await (const chunk of stream.body) {
   // Extracting the message from the parsed data and appending it to the 'message' variable
   message += parsedData.choices[0].delta.content;
 
+  showMessage = message.replace("upgrade", 'millorar');
+
   // Setting the inner text of the DOM element 'textDOM' to the accumulated message
-  textDOM.innerText = message;
+  textDOM.innerText = showMessage;
 }
 
 function formatJSON(info, element) {
