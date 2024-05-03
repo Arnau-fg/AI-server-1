@@ -8,7 +8,7 @@ export async function getAIResponse(systemContent, userContent) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ //The body format has to be followed toe to toe, for further configuration visit: https://lmstudio.ai/docs/local-server
-            'model': 'lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF', // here add the model you are using, this can be grabbed in the LM Studio app
+            'model': 'microsoft/Phi-3-mini-4k-instruct-gguf', // here add the model you are using, this can be grabbed in the LM Studio app
             'messages': [
                 {
                     'role': 'system', //System prompts tell the ai how to act and orders to follow
