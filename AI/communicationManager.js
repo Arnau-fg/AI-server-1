@@ -20,7 +20,7 @@ export async function getAIResponse(systemContent, userContent) {
                 }
             ],
             'temperature': 0.6, //Temperature varies depending on how creative or precise you want the answer to be, higher (usually than 1) means more creative and lower means more precise
-            'max_tokens': -1, //maximum length of the response prompt, set to -1 for unlimited
+            'max_tokens': 500, //maximum length of the response prompt, set to -1 for unlimited
             'stream': true, //so that the info is sent in chunks, not all together
             'contextLength': 0, //Makes it so it can remember past tokens (default 1024)
         })
