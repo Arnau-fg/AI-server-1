@@ -66,7 +66,7 @@ function formatJSON(info, element) {
         (subComponent) => element.id === subComponent.id
       );
       objectToPush = {
-        type: "TitleComponent",
+        type: "Title",
         content: dataInElement.text,
       };
       promptData.push(objectToPush);
@@ -76,15 +76,15 @@ function formatJSON(info, element) {
         (subComponent) => element.id === subComponent.id
       );
       objectToPush = {
-        type: "TextComponent",
+        type: "Text",
         content: dataInElement.text,
       };
       promptData.push(objectToPush);
       break;
     case "ImageComponent":
       objectToPush = {
-        type: "ImageComponent",
-        content: "ImageComponent",
+        type: "Image",
+        content: "Image",
       };
       promptData.push(objectToPush);
       break;
@@ -94,15 +94,14 @@ function formatJSON(info, element) {
       );
       let linksText = dataInElement.links.map((link) => link.text);
       objectToPush = {
-        type: "LinksComponent",
+        type: "Links",
         content: linksText,
       };
       promptData.push(objectToPush);
       break;
     case "VideoComponent":
       objectToPush = {
-        type: "VideoComponent",
-        content: "VideoComponent",
+        type: "Video"
       };
       promptData.push(objectToPush);
       break;
@@ -112,7 +111,7 @@ function formatJSON(info, element) {
       );
 
       objectToPush = {
-        type: "TimelineComponent",
+        type: "Timeline",
         content: dataInElement.timeline,
       };
       promptData.push(objectToPush);
