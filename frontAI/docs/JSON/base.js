@@ -137,7 +137,7 @@ export const info =
     },
     {
         "type": "TitleComponent",
-        "text": "Hey, Soy Loris Crisafo Norte",
+        "text": "Hey, Soc Loris Crisafo Norte",
         "bold": true,
         "id": 27,
         "align": "left"
@@ -157,7 +157,7 @@ export const info =
     },
     {
         "type": "TextComponent",
-        "text": "Como desarrollador de software, he tenido el privilegio de sumergirme en un mundo de creatividad, lógica y resolución de problemas. Desde que escribí mi primera línea de código, he estado inmerso en un viaje emocionante y gratificante.",
+        "text": "Com a desenvolupador de software, he tingut el privilegi de sumir-me en un món de creativitat, lògica i resolució de problemes. Des que vaig escriure la primera línia de codi, he estat immergit en un viatge emocionant i gratificant.",
         "bold": false,
         "id": 29,
         "align": "left"

@@ -4,29 +4,66 @@
 import "./style.css";
 
 // Importing the fetches
-import { fetchGeneric, fetchGenericWithInfo } from "./communicationManager.js";
+import { fetchGeneric, fetchGenericWithInfo, fetchMillora, fetchGeneracio } from "./communicationManager.js";
 
 import { info } from "./docs/JSON/base.js";
 
 const categories = ["programador", "dissenyador web"];
 
+const objectID = 29;
+const subObjectID = 0;
+
+let higlightedObject;
+
 const promptData = [];
 
 for (const component of info.portfolioComponents) {
+  
+  
+
   for (const subComponent of component.components) {
+    
     if (subComponent.length > 0) {
+      higlightedObject = subComponent.find(element => element.id === objectID);
       for (const element of subComponent) {
+        
         formatJSON(info, element);
       }
     }
   }
 }
 
-console.log(promptData);
+let objectToPrompt;
+
+if (higlightedObject) {
+  if(higlightedObject.type === "TimelineComponent") {
+    const timelineData = info.content.find(
+      (subComponent) => higlightedObject.id === subComponent.id
+    );
+    const timeline = timelineData.timeline;
+    objectToPrompt = {
+      type: "Timeline",
+      content: timeline[0].text,
+      id: higlightedObject.id,
+      subID: subObjectID,
+    };
+  } else {
+    const dataInElement = info.content.find(
+      (subComponent) => higlightedObject.id === subComponent.id
+    );
+    objectToPrompt = {
+      type: higlightedObject.type,
+      content: dataInElement.text,
+      id: higlightedObject.id,
+    };
+  }
+}
+
+console.log(objectToPrompt);
 
 const sendData = JSON.stringify(promptData);
 const sendCategories = JSON.stringify(categories);
-console.log(sendData);
+const sendElement = JSON.stringify(objectToPrompt);
 
 // Initializing an empty string variable to store the message
 let message = "";
@@ -38,10 +75,16 @@ const textDOM = document.getElementById("data");
 let utf8decoder = new TextDecoder();
 
 // Fetching a stream of data asynchronously using the 'fetchGeneric' function
-const stream = await fetchGeneric(categories);
+// const stream = await fetchGeneric(categories);
 
 // Fetching a stream of data asynchronously using the 'fetchGenericWithInfo' function
 // const stream = await fetchGenericWithInfo(sendData, sendCategories);
+
+// Fetching a stream of data asynchronously using the 'fetchMillora' function
+const stream = await fetchMillora(sendElement, sendData, sendCategories);
+
+// Fetching a stream of data asynchronously using the 'fetchGeneracio' function
+// const stream = await fetchGeneracio(sendElement, sendData, sendCategories);
 
 // Iterating over the stream of data asynchronously, processing each chunk, stream.body is required, because the chunk data is stored in the body attribute
 for await (const chunk of stream.body) {
@@ -71,6 +114,7 @@ function formatJSON(info, element) {
       objectToPush = {
         type: "Title",
         content: dataInElement.text,
+        id: element.id,
       };
       promptData.push(objectToPush);
       break;
@@ -81,6 +125,7 @@ function formatJSON(info, element) {
       objectToPush = {
         type: "Text",
         content: dataInElement.text,
+        id: element.id,
       };
       promptData.push(objectToPush);
       break;
@@ -88,6 +133,7 @@ function formatJSON(info, element) {
       objectToPush = {
         type: "Image",
         content: "Image",
+        id: element.id,
       };
       promptData.push(objectToPush);
       break;
@@ -99,12 +145,14 @@ function formatJSON(info, element) {
       objectToPush = {
         type: "Links",
         content: linksText,
+        id: element.id,
       };
       promptData.push(objectToPush);
       break;
     case "VideoComponent":
       objectToPush = {
-        type: "Video"
+        type: "Video",
+        id: element.id,
       };
       promptData.push(objectToPush);
       break;
@@ -116,6 +164,7 @@ function formatJSON(info, element) {
       objectToPush = {
         type: "Timeline",
         content: dataInElement.timeline,
+        id: element.id,
       };
       promptData.push(objectToPush);
       break;
