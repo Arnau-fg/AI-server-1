@@ -4,7 +4,7 @@
 import "./style.css";
 
 // Importing the fetches
-import { fetchGeneric, fetchGenericWithInfo, fetchMillora, fetchGeneracio } from "./communicationManager.js";
+import { fetchGeneric, fetchGenericWithInfo, fetchMillora, fetchGeneracio, fetchAllarga, fetchAcurta } from "./communicationManager.js";
 
 import { info } from "./docs/JSON/base.js";
 
@@ -61,10 +61,6 @@ if (higlightedObject) {
 
 console.log(objectToPrompt);
 
-const sendData = JSON.stringify(promptData);
-const sendCategories = JSON.stringify(categories);
-const sendElement = JSON.stringify(objectToPrompt);
-
 // Initializing an empty string variable to store the message
 let message = "";
 let showMessage = "";
@@ -78,13 +74,19 @@ let utf8decoder = new TextDecoder();
 // const stream = await fetchGeneric(categories);
 
 // Fetching a stream of data asynchronously using the 'fetchGenericWithInfo' function
-// const stream = await fetchGenericWithInfo(sendData, sendCategories);
+// const stream = await fetchGenericWithInfo(promptData, categories);
 
 // Fetching a stream of data asynchronously using the 'fetchMillora' function
-const stream = await fetchMillora(sendElement, sendData, sendCategories);
+// const stream = await fetchMillora(objectToPrompt, promptData, categories);
 
 // Fetching a stream of data asynchronously using the 'fetchGeneracio' function
-// const stream = await fetchGeneracio(sendElement, sendData, sendCategories);
+// const stream = await fetchGeneracio(objectToPrompt, promptData, categories);
+
+// Fetching a stream of data asynchronously using the 'fetchMillora' function
+// const stream = await fetchAllarga(objectToPrompt, promptData, categories);
+
+// Fetching a stream of data asynchronously using the 'fetchMillora' function
+const stream = await fetchAcurta(objectToPrompt, categories);
 
 // Iterating over the stream of data asynchronously, processing each chunk, stream.body is required, because the chunk data is stored in the body attribute
 for await (const chunk of stream.body) {

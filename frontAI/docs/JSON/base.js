@@ -157,7 +157,7 @@ export const info =
     },
     {
         "type": "TextComponent",
-        "text": "Com a desenvolupador de software, he tingut el privilegi de sumir-me en un món de creativitat, lògica i resolució de problemes. Des que vaig escriure la primera línia de codi, he estat immergit en un viatge emocionant i gratificant.",
+        "text": "Com a desenvolupador de software, he tingut el privilegi de sumir-me en un món de creativitat, lògica i resolució de problemes. Des que vaig escriure la primera línia de codi, he estat submergit en un viatge emocionant i gratificant. Vaig començar a programar quan tenia els 16 anys a una classe a la meva escola, a partir d'aquell moment sempre m'he interessat per aquest món, descobrir noves tecnologies i aprendre noves tècniques és el que més disfruto",
         "bold": false,
         "id": 29,
         "align": "left"
