@@ -268,6 +268,86 @@ app.post('/acurta', async (req, res) => {
   res.end();
 })
 
+app.post('/formalitza', async (req, res) => {
+  // The system prompt tells the AI how to act
+  const systemContent = "You are a professional recruiter and a digital portfolio expert, you work for an app called KnowMe, this app is the best portfilio creation app. You help people by aiding their requests to make a digital portfolio. The user will send you an object, some data and some categories. Have in mind the categories when creating your answer. This data is a JSON object which can contain some components, such as 'Text' which are just plain text, some 'Title' which are titles often used as a plain Title or to separate sections, some 'Image' which are images and whose text correspond to the 'alt' text, some 'Video' which are videos, some 'Link' which contain links where you can assume they hav the correct link, some 'Timeline' which have dates and texts inside. This data is what they already have in their portfolio. This data is ordered by how far up in the portfolio it is. Locate the given object inside the data and take note of its surrounding objects since they are its context. Rewrite the content inside the object using a better vocabulary (or at least different words) and keeping a similar length. YOU ARE NOT THE PERSON YOU ARE TRYING TO HELP. Give ONLY the text, nothing else. Answer in Catalan. Don't add the english translation at the end";
+  // Counter o know how many tokens have been sent
+  let tokenCounter = 0;
+
+  // Setting the response header with content type and encoding information, chunked allows the information to be streamed
+  res.writeHead(200, {
+    "Content-type": "text/plain",
+    "transfer-encoding": "chunked"
+  });
+
+  // Calling an asynchronous function to get a response from the AI, passing the content from the request body
+  const response = await getCreativeAIResponse(systemContent, req.body.content);
+
+  // Iterating over the response body in chunks, stream.body is required, because the chunk data is stored in the body attribute
+  for await (const chunk of response.body) {
+
+    // Converting each chunk of data from buffer to a string
+    const jsonString = Buffer.from(chunk).toString('utf8');
+    tokenCounter++;
+
+    // Checking if the length of the string exceeds a certain threshold, this is becuse the last info sent throws an error when trying to parse it
+    if (jsonString.length > 270) {
+
+      // Slicing the string to remove some metadata, this way it can be parsed correctly
+      const reducedString = jsonString.slice(6);
+
+      // Writing the reduced string to the response
+      res.write(reducedString);
+    }
+  }
+
+  // Logging a message indicating that the processing is done
+  console.log("done, tokens: ", tokenCounter);
+
+  // Ending the response
+  res.end();
+})
+
+app.post('/casualitza', async (req, res) => {
+  // The system prompt tells the AI how to act
+  const systemContent = "You are a professional recruiter and a digital portfolio expert, you work for an app called KnowMe, this app is the best portfilio creation app. You help people by aiding their requests to make a digital portfolio. The user will send you an object, some data and some categories. Have in mind the categories when creating your answer. This data is a JSON object which can contain some components, such as 'Text' which are just plain text, some 'Title' which are titles often used as a plain Title or to separate sections, some 'Image' which are images and whose text correspond to the 'alt' text, some 'Video' which are videos, some 'Link' which contain links where you can assume they hav the correct link, some 'Timeline' which have dates and texts inside. This data is what they already have in their portfolio. This data is ordered by how far up in the portfolio it is. Locate the given object inside the data and take note of its surrounding objects since they are its context. Rewrite the content inside the object making it more casual and keeping a similar length. YOU ARE NOT THE PERSON YOU ARE TRYING TO HELP. Give ONLY the text, nothing else. Answer in Catalan. Don't add the english translation at the end";
+  // Counter o know how many tokens have been sent
+  let tokenCounter = 0;
+
+  // Setting the response header with content type and encoding information, chunked allows the information to be streamed
+  res.writeHead(200, {
+    "Content-type": "text/plain",
+    "transfer-encoding": "chunked"
+  });
+
+  // Calling an asynchronous function to get a response from the AI, passing the content from the request body
+  const response = await getCreativeAIResponse(systemContent, req.body.content);
+
+  // Iterating over the response body in chunks, stream.body is required, because the chunk data is stored in the body attribute
+  for await (const chunk of response.body) {
+
+    // Converting each chunk of data from buffer to a string
+    const jsonString = Buffer.from(chunk).toString('utf8');
+    tokenCounter++;
+
+    // Checking if the length of the string exceeds a certain threshold, this is becuse the last info sent throws an error when trying to parse it
+    if (jsonString.length > 270) {
+
+      // Slicing the string to remove some metadata, this way it can be parsed correctly
+      const reducedString = jsonString.slice(6);
+
+      // Writing the reduced string to the response
+      res.write(reducedString);
+    }
+  }
+
+  // Logging a message indicating that the processing is done
+  console.log("done, tokens: ", tokenCounter);
+
+  // Ending the response
+  res.end();
+})
+
 app.get('/test', (req, res) => {
   res.send("funciona")
 })
