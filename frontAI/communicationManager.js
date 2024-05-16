@@ -38,13 +38,13 @@ export async function fetchGenericWithInfo(content, categories) {
   });
 }
 
-export async function fetchMillora(element, content, categories) {
-  
+export async function fetchGeneracio(element, content, categories) {
+
   sendElement = JSON.stringify(element);
   sendData = JSON.stringify(content);
   sendCategories = JSON.stringify(categories);
 
-  return await fetch("https://ia.inspedralbes.cat/millora", {
+  return await fetch("https://ia.inspedralbes.cat/genera", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -55,13 +55,13 @@ export async function fetchMillora(element, content, categories) {
   });
 }
 
-export async function fetchGeneracio(element, content, categories) {
-
+export async function fetchMillora(element, content, categories) {
+  
   sendElement = JSON.stringify(element);
   sendData = JSON.stringify(content);
   sendCategories = JSON.stringify(categories);
 
-  return await fetch("https://ia.inspedralbes.cat/genera", {
+  return await fetch("https://ia.inspedralbes.cat/millora", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -103,6 +103,40 @@ export async function fetchAcurta(element, categories) {
     },
     body: JSON.stringify({
       content: `This is the object: ${sendElement}. My categories are: ${sendCategories}`,
+    }),
+  });
+}
+
+export async function fetchFormalitza(element, content, categories) {
+  
+  sendElement = JSON.stringify(element);
+  sendData = JSON.stringify(content);
+  sendCategories = JSON.stringify(categories);
+
+  return await fetch("https://ia.inspedralbes.cat/formalitza", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      content: `This is the object: ${sendElement}. Here is the JSON data for the context: ${sendData}. My categories are: ${sendCategories}`,
+    }),
+  });
+}
+
+export async function fetchCasualitza(element, content, categories) {
+  
+  sendElement = JSON.stringify(element);
+  sendData = JSON.stringify(content);
+  sendCategories = JSON.stringify(categories);
+
+  return await fetch("https://ia.inspedralbes.cat/casualitza", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      content: `This is the object: ${sendElement}. Here is the JSON data for the context: ${sendData}. My categories are: ${sendCategories}`,
     }),
   });
 }

@@ -4,7 +4,7 @@
 import "./style.css";
 
 // Importing the fetches
-import { fetchGeneric, fetchGenericWithInfo, fetchMillora, fetchGeneracio, fetchAllarga, fetchAcurta } from "./communicationManager.js";
+import { fetchGeneric, fetchGenericWithInfo, fetchMillora, fetchGeneracio, fetchAllarga, fetchAcurta, fetchFormalitza, fetchCasualitza } from "./communicationManager.js";
 
 import { info } from "./docs/JSON/base.js";
 
@@ -82,11 +82,17 @@ let utf8decoder = new TextDecoder();
 // Fetching a stream of data asynchronously using the 'fetchGeneracio' function
 // const stream = await fetchGeneracio(objectToPrompt, promptData, categories);
 
-// Fetching a stream of data asynchronously using the 'fetchMillora' function
+// Fetching a stream of data asynchronously using the 'fetchAllarga' function
 // const stream = await fetchAllarga(objectToPrompt, promptData, categories);
 
-// Fetching a stream of data asynchronously using the 'fetchMillora' function
-const stream = await fetchAcurta(objectToPrompt, categories);
+// Fetching a stream of data asynchronously using the 'fetchAcurta' function
+// const stream = await fetchAcurta(objectToPrompt, categories);
+
+// Fetching a stream of data asynchronously using the 'fetchFormalitza' function
+// const stream = await fetchFormalitza(objectToPrompt, categories);
+
+// Fetching a stream of data asynchronously using the 'fetchCasualitza' function
+const stream = await fetchCasualitza(objectToPrompt, categories);
 
 // Iterating over the stream of data asynchronously, processing each chunk, stream.body is required, because the chunk data is stored in the body attribute
 for await (const chunk of stream.body) {
