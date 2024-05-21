@@ -1,16 +1,8 @@
-/**
- * Function that fetches an ai response from the Node server
- * @returns {Promise<Response>} The response from the server, it has to be processed
- */
-let sendCategories;
-let sendElement;
-let sendData;
 
-export async function fetchGeneric(categories) {
+export async function iaGeneric(categories) {
 
   sendCategories = JSON.stringify(categories);
 
-  //Change the host to your Node's host
   return await fetch("https://ia.inspedralbes.cat", {
     method: "POST",
     headers: {
@@ -22,7 +14,7 @@ export async function fetchGeneric(categories) {
   });
 }
 
-export async function fetchGenericWithInfo(content, categories) {
+export async function iaGenericWithInfo(content, categories) {
   
   sendData = JSON.stringify(content);
   sendCategories = JSON.stringify(categories);
@@ -38,7 +30,7 @@ export async function fetchGenericWithInfo(content, categories) {
   });
 }
 
-export async function fetchGeneracio(element, content, categories) {
+export async function iaGeneracio(element, content, categories) {
 
   sendElement = JSON.stringify(element);
   sendData = JSON.stringify(content);
@@ -55,7 +47,7 @@ export async function fetchGeneracio(element, content, categories) {
   });
 }
 
-export async function fetchMillora(element, content, categories) {
+export async function iaMillora(element, content, categories) {
   
   sendElement = JSON.stringify(element);
   sendData = JSON.stringify(content);
@@ -72,7 +64,7 @@ export async function fetchMillora(element, content, categories) {
   });
 }
 
-export async function fetchAllarga(element, content, categories) {
+export async function iaAllarga(element, content, categories) {
 
   sendElement = JSON.stringify(element);
   sendData = JSON.stringify(content);
@@ -90,7 +82,7 @@ export async function fetchAllarga(element, content, categories) {
   });
 }
 
-export async function fetchAcurta(element, categories) {
+export async function iaAcurta(element, categories) {
 
   sendCategories = JSON.stringify(categories);
   sendElement = JSON.stringify(element.content);
@@ -107,7 +99,7 @@ export async function fetchAcurta(element, categories) {
   });
 }
 
-export async function fetchFormalitza(element, content, categories) {
+export async function iaFormalitza(element, content, categories) {
   
   sendElement = JSON.stringify(element);
   sendData = JSON.stringify(content);
@@ -124,7 +116,7 @@ export async function fetchFormalitza(element, content, categories) {
   });
 }
 
-export async function fetchCasualitza(element, content, categories) {
+export async function iaCasualitza(element, content, categories) {
   
   sendElement = JSON.stringify(element);
   sendData = JSON.stringify(content);

@@ -1,225 +1,271 @@
-export const info = 
-{"portfolioComponents":[
-    {
-        "components": [
-            [],
-            [
-                {
-                    "type": "ImageComponent",
-                    "id": 28,
-                    "key": 4
-                },
-                {
-                    "type": "TitleComponent",
-                    "id": 27,
-                    "key": 4
-                },
-                {
-                    "type": "LinksComponent",
-                    "id": 36,
-                    "key": 4
-                }
-            ],
-            []
+export const data = {
+  state: {
+    type: "component",
+    header: {
+      title: "KnowMe Playground",
+      favicon:
+        "/@fs/usr/src/app/src/assets/Logo/logo.png?origWidth=411&origHeight=415&origFormat=png",
+    },
+    currentGrid: ["2", "0"],
+    navbar: {
+      titles: [
+        { id: 206, text: "Formation" },
+        { id: 11, text: "Experience" },
+      ],
+      logo: { img: null, text: "KnowMe", rounded: "rounded-md" },
+      design: { sticky: true, type: 2 },
+      socialMedia: {
+        links: [
+          {
+            text: "Facebook",
+            src: "https://facebook.com",
+            icon: "https://cdn.icon-icons.com/icons2/2428/PNG/512/facebook_black_logo_icon_147136.png",
+            srcIcon:
+              "https://cdn.icon-icons.com/icons2/2428/PNG/512/facebook_black_logo_icon_147136.png",
+            iconSize: 38,
+            radius: 999,
+          },
         ],
-        "style": {
-            "sizes": [
-                "0.05",
-                "0.7",
-                "0"
-            ],
-            "string": "minmax(10px,0.05fr) minmax(10px,0.7fr) minmax(10px,0fr)"
-        }
+        size: 35,
+        radius: 999,
+        align: "right",
+      },
     },
-    {
-        "components": [
-            [],
-            [
-                {
-                    "type": "VideoComponent",
-                    "id": 35,
-                    "key": 4
-                }
-            ],
-            []
+    editing: {
+      idDomain: null,
+      webURL: null,
+      isPublic: null,
+      category: "Administrative",
+    },
+    edit: true,
+    content: [
+      {
+        type: "TitleComponent",
+        text: "Experience",
+        bold: true,
+        id: 11,
+        align: "left",
+        size: 1,
+        inNavbar: true,
+      },
+      {
+        type: "ParagraphComponent",
+        text: "My portfolio showcases my passion for design and creativity, from vibrant brands to captivating digital experiences.",
+        bold: false,
+        id: 18,
+        align: "left",
+        size: 1,
+      },
+      {
+        type: "LinksComponent",
+        links: [
+          {
+            text: "Github",
+            src: "",
+            icon: "https://cdn-icons-png.flaticon.com/512/25/25231.png",
+            srcIcon: "https://cdn-icons-png.flaticon.com/512/25/25231.png",
+          },
         ],
-        "style": {
-            "sizes": [
-                1,
-                1,
-                1
-            ],
-            "string": "minmax(40px,1fr) minmax(40px,1fr) minmax(40px,1fr)"
-        }
-    },
-    {
-        "components": [
-            [
-                {
-                    "type": "TitleComponent",
-                    "id": 30,
-                    "key": 4
-                },
-                {
-                    "type": "TextComponent",
-                    "id": 29,
-                    "key": 4
-                },
-                {
-                    "type": "TimelineComponent",
-                    "id": 33,
-                    "key": 4
-                }
-            ],
-            [],
-            []
+        id: 139,
+        align: "left",
+        radius: 999,
+        size: 38,
+      },
+      {
+        type: "TitleComponent",
+        text: "Formation",
+        bold: true,
+        id: 206,
+        align: "left",
+        size: 1,
+        inNavbar: false,
+      },
+      {
+        type: "TimelineComponent",
+        title: "Experiencia",
+        timeline: [
+          { date: "2024", text: "sadasd asd as dasd as dasd as" },
+          { text: "", date: "" },
         ],
-        "style": {
-            "sizes": [
-                "2",
-                "0",
-                "0.55"
-            ],
-            "string": "minmax(10px,2fr) minmax(10px,0fr) minmax(10px,0.55fr)"
-        }
-    }
-],
-"content":[
-    {
-        "type": "TitleComponent",
-        "text": "Hey, Soy Loris Crisafo Norte",
-        "bold": true,
-        "id": 0,
-        "align": "center"
-    },
-    {
-        "type": "ImageComponent",
-        "src": "data:image/png;base64,iVBORw0KGgoAAAANSU",
-        "srcOrig": "blob:http://knowme.cat/f237c32d-0f09-431c-bcdf-eae2192723a3",
-        "border": 2,
-        "radius": 50,
-        "width": 100,
-        "height": 400,
-        "rotate": "0",
-        "flip": -1,
-        "zoom": "400",
-        "align": "center",
-        "id": 1,
-        "position": {
-            "x": 0.5621477251714059,
-            "y": 0.38599523593475304
-        }
-    },
-    {
-        "type": "LinksComponent",
-        "links": [
-            {
-                "text": "Instagram",
-                "src": "",
-                "icon": "https://cdn-icons-png.flaticon.com/512/25/25231.png",
-                "srcIcon": "https://cdn-icons-png.flaticon.com/512/25/25231.png",
-                "iconSize": 38,
-                "radius": 999
-            },
-            {
-                "text": "Github",
-                "src": "",
-                "icon": "blob:http://knowme.cat/6e9595f1-919f-4804-9ffa-86b73318582b",
-                "srcIcon": "blob:http://knowme.cat/6e9595f1-919f-4804-9ffa-86b73318582b",
-                "iconSize": 38,
-                "radius": 999
-            }
+        id: 527,
+      },
+      {
+        type: "ProjectComponent",
+        title: "This is my project!",
+        id: 547,
+        src: "https://via.placeholder.com/150",
+        srcOrig: "https://via.placeholder.com/150",
+        border: 2,
+        radius: "2xl",
+        width: 250,
+        height: 250,
+        rotate: 0,
+        flip: 1,
+        zoom: 100,
+        titleSize: 1,
+        textSize: 1,
+        links: [],
+        text: "My portfolio showcases my passion for design and creativity, from vibrant brands to captivating digital experiences.",
+        align: "left",
+      },
+      {
+        type: "LinksComponent",
+        links: [
+          {
+            text: "Facebook",
+            src: "https://facebook.com",
+            icon: "https://cdn.icon-icons.com/icons2/2428/PNG/512/facebook_black_logo_icon_147136.png",
+            srcIcon:
+              "https://cdn.icon-icons.com/icons2/2428/PNG/512/facebook_black_logo_icon_147136.png",
+            iconSize: 38,
+            radius: 999,
+          },
+          {
+            text: "Github",
+            src: "",
+            icon: "https://cdn-icons-png.flaticon.com/512/25/25231.png",
+            srcIcon: "https://cdn-icons-png.flaticon.com/512/25/25231.png",
+          },
         ],
-        "id": 5,
-        "align": "center",
-        "srcIcon": "blob:http://knowme.cat/6e9595f1-919f-4804-9ffa-86b73318582b",
-        "icon": "blob:http://knowme.cat/6e9595f1-919f-4804-9ffa-86b73318582b"
-    },
-    {
-        "type": "TitleComponent",
-        "text": "Hey, Soc Loris Crisafo Norte",
-        "bold": true,
-        "id": 27,
-        "align": "left"
-    },
-    {
-        "type": "ImageComponent",
-        "src": "data:image/png;base64,iVBORw0KGgoAAAA",
-        "border": 2,
-        "radius": 50,
-        "width": 250,
-        "height": 250,
-        "rotate": 0,
-        "flip": 1,
-        "zoom": 100,
-        "align": "left",
-        "id": 28
-    },
-    {
-        "type": "TextComponent",
-        "text": "Com a desenvolupador de software, he tingut el privilegi de sumir-me en un món de creativitat, lògica i resolució de problemes. Des que vaig escriure la primera línia de codi, he estat submergit en un viatge emocionant i gratificant. Vaig començar a programar quan tenia els 16 anys a una classe a la meva escola, a partir d'aquell moment sempre m'he interessat per aquest món, descobrir noves tecnologies i aprendre noves tècniques és el que més disfruto",
-        "bold": false,
-        "id": 29,
-        "align": "left"
-    },
-    {
-        "type": "TitleComponent",
-        "text": "Experiencia",
-        "bold": true,
-        "id": 30,
-        "align": "left",
-        "size": 1
-    },
-    {
-        "type": "TimelineComponent",
-        "title": "Mi historia",
-        "timeline": [
-            {
-                "date": "2022-2024",
-                "text": "Durante este tiempo estuve haciendo practicas de empresa en una empresa llamada Datapta en la cual aprendi mucho los conceptos de backend y frontend."
-            }
+        id: 559,
+        align: "left",
+        radius: 999,
+        size: 38,
+      },
+      {
+        type: "ImageComponent",
+        src: "https://via.placeholder.com/150",
+        srcOrig: "https://via.placeholder.com/150",
+        border: 2,
+        radius: "2xl",
+        width: 250,
+        height: 250,
+        rotate: 0,
+        flip: 1,
+        zoom: 100,
+        align: "left",
+        id: 580,
+      },
+      {
+        type: "ToolsComponent",
+        chips: [
+          {
+            text: "React",
+            src: "",
+            icon: "/@fs/usr/src/app/src/assets/react-js-icon.svg?origWidth=122.88&origHeight=109.43&origFormat=svg",
+            srcIcon:
+              "/@fs/usr/src/app/src/assets/react-js-icon.svg?origWidth=122.88&origHeight=109.43&origFormat=svg",
+          },
         ],
-        "id": 33
+        id: 604,
+        align: "left",
+        style: 0,
+        radius: 8,
+        size: 38,
+      },
+    ],
+    contentIndex: 1,
+    componentItem: {
+      key: 605,
+      id: "ToolsComponent",
+      mode: "add",
+      isDraggingStarted: true,
     },
-    {
-        "type": "VideoComponent",
-        "src": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=XCVskR-DWE-0u0XM",
-        "border": 2,
-        "radius": 10,
-        "width": 250,
-        "height": 250,
-        "align": "left",
-        "id": 35
+    palette: {
+      index: 0,
+      type: "light",
+      h1: "#EF4444",
+      h2: "#F87171",
+      h3: "#F87171",
+      paragraph: "#44403C",
+      background: "#FEF2F2",
+      border: "#FCA5A5",
+      linkBackground: "#FCA5A5",
+      linkHoverBackground: "#FECACA",
     },
-    {
-        "type": "LinksComponent",
-        "links": [
-            {
-                "text": "Github",
-                "src": "",
-                "icon": "https://cdn-icons-png.flaticon.com/512/25/25231.png",
-                "srcIcon": "https://cdn-icons-png.flaticon.com/512/25/25231.png",
-                "iconSize": 38,
-                "radius": 999
-            },
-            {
-                "text": "Linkedin",
-                "src": "",
-                "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRdiX_DSuj7ZA3docODytCl1pHKNCZa1INkDnJm-GNOg&s",
-                "srcIcon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRdiX_DSuj7ZA3docODytCl1pHKNCZa1INkDnJm-GNOg&s",
-                "iconSize": 38,
-                "radius": 999
-            },
-            {
-                "text": "CV",
-                "src": "",
-                "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRdiX_DSuj7ZA3docODytCl1pHKNCZa1INkDnJm-GNOg&s",
-                "srcIcon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRdiX_DSuj7ZA3docODytCl1pHKNCZa1INkDnJm-GNOg&s",
-                "iconSize": 38,
-                "radius": 999
-            }
+    portfolioComponents: [
+      {
+        components: [
+          [
+            { type: "TitleComponent", id: 206 },
+            { styleGrid: { justifyContent: "start" } },
+          ],
+          [
+            { type: "LinksComponent", id: 139 },
+            { type: "ParagraphComponent", id: 18 },
+            { styleGrid: { justifyContent: "start" } },
+          ],
+          [
+            { type: "ToolsComponent", id: 604 },
+            { styleGrid: { justifyContent: "start" } },
+          ],
         ],
-        "id": 36,
-        "align": "left"
-    }
-]}
+        style: {
+          sizes: [33.3, 33.3, 33.3],
+          string: "minmax(40px,1fr) minmax(40px,1fr) minmax(40px,1fr)",
+          showResizeDiv: [false, false, false],
+        },
+      },
+      {
+        components: [
+          [{ styleGrid: { justifyContent: "start" } }],
+          [
+            { type: "ProjectComponent", id: 547 },
+            { styleGrid: { justifyContent: "start" } },
+          ],
+          [
+            { type: "ImageComponent", id: 580 },
+            { type: "LinksComponent", id: 559 },
+            { styleGrid: { justifyContent: "start" } },
+          ],
+        ],
+        style: {
+          sizes: [33.3, 33.3, 33.3],
+          string: "minmax(40px,1fr) minmax(40px,1fr) minmax(40px,1fr)",
+          showResizeDiv: [false, false, false],
+        },
+      },
+      {
+        components: [
+          [{ styleGrid: { justifyContent: "start" } }],
+          [{ styleGrid: { justifyContent: "start" } }],
+          [{ styleGrid: { justifyContent: "start" } }],
+        ],
+        style: {
+          sizes: [33.3, 33.3, 33.3],
+          string: "minmax(40px,1fr) minmax(40px,1fr) minmax(40px,1fr)",
+          showResizeDiv: [false, false, false],
+        },
+      },
+      {
+        components: [
+          [
+            { type: "TitleComponent", id: 11 },
+            { type: "TimelineComponent", id: 527 },
+            { style: { justifyContent: "start" } },
+          ],
+          [{ style: { justifyContent: "start" } }],
+          [{ style: { justifyContent: "start" } }],
+        ],
+        style: {
+          sizes: [33.3, 33.3, 33.3],
+          string: "minmax(40px,1fr) minmax(40px,1fr) minmax(40px,1fr)",
+          showResizeDiv: [false, false, false],
+        },
+      },
+      {
+        components: [
+          [{ style: { justifyContent: "start" } }],
+          [{ style: { justifyContent: "start" } }],
+          [{ style: { justifyContent: "start" } }],
+        ],
+        style: {
+          sizes: [33.3, 33.3, 33.3],
+          string: "minmax(40px,1fr) minmax(40px,1fr) minmax(40px,1fr)",
+          showResizeDiv: [false, false, false],
+        },
+      },
+    ],
+  },
+  version: 0,
+};
