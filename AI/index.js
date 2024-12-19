@@ -2,10 +2,10 @@
 // Institut Pedralbes 2024 2DAW
 
 // Importing required modules
-import express from "express"; // Importing Express framework
+import express, { Router } from "express"; // Importing Express framework
 import cors from "cors"; // Importing CORS middleware
 import { getAIResponse, getCreativeAIResponse } from "./communicationManager.js"; // Importing the function that communicates with the AI
-
+import conexusRoutes from "./conexus/routes/index.js";
 
 // Initializing Express application
 const app = express();
@@ -18,6 +18,9 @@ app.use(express.json());
 
 // Defining the port number for the server to listen on
 const port = 3000;
+
+//CONEXUS PROJECT
+app.use('/iaconexus', conexusRoutes);
 
 // Handling POST requests to the root endpoint ('/')
 app.post('/', async (req, res) => {
@@ -440,3 +443,4 @@ app.get('/ia/test', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+

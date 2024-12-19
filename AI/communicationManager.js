@@ -1,7 +1,7 @@
 export async function getAIResponse(systemContent, userContent) {
 
     //This is the base port and route that is given by LM Studio, change it however you may need
-
+    
     return (await fetch("http://127.0.0.1:1234/v1/chat/completions", {
         method: 'POST',
         headers: {
