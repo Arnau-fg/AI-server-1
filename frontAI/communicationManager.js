@@ -28,3 +28,18 @@ export async function fetchGenericWithInfo(content, categories) {
     }),
   });
 }
+
+export async function fetchConexus(content, comment) {
+  console.log("conexus complete!");
+return await fetch("https://ia.inspedralbes.cat/iaconexus/postComment", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    content: `Aqui tienes el contenido: ${content}. Y el comentario del usuario: ${comment}`,
+  }),
+});
+}
+
+

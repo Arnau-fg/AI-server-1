@@ -1,4 +1,4 @@
-export async function getResponseAiConexus(systemContent) {
+export async function getResponseAiConexus(systemContent, commentUser) {
     try {
         const response = await fetch("http://127.0.0.1:1234/v1/chat/completions", {
             method: 'POST',
@@ -14,7 +14,7 @@ export async function getResponseAiConexus(systemContent) {
                     },
                     {
                         role: "user",
-                        content: "esta piola" // Mensaje del usuario
+                        content: commentUser // Mensaje del usuario
                     }
                 ],
                 response_format: {

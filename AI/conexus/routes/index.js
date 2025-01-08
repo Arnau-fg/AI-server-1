@@ -4,6 +4,8 @@ import { getResponseAiConexus } from "../communicationManager.js"
 const router = express.Router();
 
 router.post("/postComment", async (req, res) => {
+    console.log("comentario recibido", req.body.comment);
+    const commentUser = req.body.comment;
 
     const systemContent = 
         `Eres un clasificador de comentarios, diseñado para analizar y categorizar el contenido según las siguientes reglas. 
@@ -36,7 +38,7 @@ router.post("/postComment", async (req, res) => {
         **Comentarios neutrales o respetuosos, como "Necesito ayuda con Java", son POSITIVO.**"`
 
     try{
-        const response = await getResponseAiConexus(systemContent)
+        const response = await getResponseAiConexus(systemContent, commentUser)
         
         res.json(response)
     }catch(error){
