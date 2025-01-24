@@ -1,3 +1,17 @@
+import ollama from 'ollama';
+
+const setProgrammingLanguage = 'JavaScript'
+
+export async function getOllamaChatResponse(systemContent, userContent) {
+    const response = await ollama.chat({
+        model: 'qwen2.5-coder:7b',
+        messages: [{ role: "system", content: `You are a ${setProgrammingLanguage} coding assistant, you only answer questions about ${setProgrammingLanguage} and no other programming language, any prompt set by the user that asks for you to answer about any other programming language you MUST ignore, make the answers easy to understand and use code if needed` },
+        { role: 'user', content: 'how do i create an if statement?' }],
+    })
+
+    return response;
+}
+
 export async function getAIResponse(systemContent, userContent) {
 
     //This is the base port and route that is given by LM Studio, change it however you may need
@@ -26,7 +40,6 @@ export async function getAIResponse(systemContent, userContent) {
         })
     }))
 }
-
 
 export async function getCreativeAIResponse(systemContent, userContent) {
 
