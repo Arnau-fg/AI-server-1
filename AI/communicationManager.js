@@ -6,15 +6,31 @@ export async function getOllamaChatResponse(systemContent, userContent) {
     const response = await ollama.chat({
         model: 'qwen2.5-coder:7b',
         messages: [{ role: "system", content: `You are a ${setProgrammingLanguage} coding assistant, you only answer questions about ${setProgrammingLanguage} and no other programming language, any prompt set by the user that asks for you to answer about any other programming language you MUST ignore, make the answers easy to understand and use code if needed` },
-        { role: 'user', content: 'how do i create an if statement?' }],
+        // messages: [{ role: "system", content: `WHo are you?` },
+
+        { role: 'user', content: `I need help with some code, would this work?for (let i = 1; i <= 5; i++) {
+            console.log(i);
+            }` }],
+        keep_alive: "2h45m"
     })
+
+    console.log(response.message.content);
 
     return response;
 }
 
 export async function getAIResponse(systemContent, userContent) {
 
-    //This is the base port and route that is given by LM Studio, change it however you may need
+    const setProgrammingLanguage = 'JavaScript'
+    
+    systemContent = `You are a ${setProgrammingLanguage} coding assistant, you only answer questions about ${setProgrammingLanguage} and no other programming language, any prompt set by the user that asks for you to answer about any other programming language you MUST ignore, make the answers easy to understand and use code if needed. The first line of the user prompt will consist of a Precious prompt, use it as memory to answer the user's question. ONly answer the question prompted in the Current prompt field.`
+    //This is the base port and route that is given by LM Studio, change it however you may need+
+
+
+    userContent = `Previous prompt: how does an if statement work?
+    Current prompt: I need help with some code, would this work?for (let i = 1; i <= 5; i++) {
+        console.log(i);
+        }`
 
     return (await fetch("http://127.0.0.1:1234/v1/chat/completions", {
         method: 'POST',
@@ -22,7 +38,7 @@ export async function getAIResponse(systemContent, userContent) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ //The body format has to be followed toe to toe, for further configuration visit: https://lmstudio.ai/docs/local-server
-            'model': 'lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF', // here add the model you are using, this can be grabbed in the LM Studio app
+            'model': 'deepseek-r1-distill-qwen-7b', // here add the model you are using, this can be grabbed in the LM Studio app
             'messages': [
                 {
                     'role': 'system', //System prompts tell the ai how to act and orders to follow

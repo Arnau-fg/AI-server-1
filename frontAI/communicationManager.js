@@ -5,7 +5,7 @@
 
 export async function fetchGeneric(categories) {
   //Change the host to your Node's host
-  return await fetch("https://ia.inspedralbes.cat", {
+  return await fetch("http://localhost:3000", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
