@@ -15,13 +15,15 @@ app.use(express.json());
 // Defining the port number for the server to listen on
 const port = 3000;
 
-app.get('/', async (req, res) => {
+app.post('/', async (req, res) => {
 
-    const response = await getAIResponse();
+    const { userPrompt } = req.body;
 
-    console.log("respondinggggggggggggggggggggggggggggggg");
+    const response = await getAIResponse(userPrompt);
 
-    res.send(response.message.content);
+    console.log(response.choices[0].message.content);
+
+    res.send(response.choices[0].message);
 
 });
 

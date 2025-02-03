@@ -19,20 +19,22 @@ export async function getOllamaChatResponse(systemContent, userContent) {
     return response;
 }
 
-export async function getAIResponse(systemContent, userContent) {
+// export async function getAIResponse(systemContent, userContent) {
+    export async function getAIResponse(userPrompt) {
+
 
     const setProgrammingLanguage = 'JavaScript'
     
-    systemContent = `You are a ${setProgrammingLanguage} coding assistant, you only answer questions about ${setProgrammingLanguage} and no other programming language, any prompt set by the user that asks for you to answer about any other programming language you MUST ignore, make the answers easy to understand and use code if needed. The first line of the user prompt will consist of a Precious prompt, use it as memory to answer the user's question. ONly answer the question prompted in the Current prompt field.`
+    const systemContent = `You are a ${setProgrammingLanguage} coding assistant, you only answer questions about ${setProgrammingLanguage} and no other programming language, any prompt set by the user that asks for you to answer about any other programming language you MUST ignore, make the answers easy to understand and use code if needed. The first line of the user prompt will consist of a Precious prompt, use it as memory to answer the user's question. ONly answer the question prompted in the Current prompt field.`;
     //This is the base port and route that is given by LM Studio, change it however you may need+
 
 
-    userContent = `Previous prompt: how does an if statement work?
+    const userContent = `Previous prompt: how does an if statement work?
     Current prompt: I need help with some code, would this work?for (let i = 1; i <= 5; i++) {
         console.log(i);
         }`
 
-    return (await fetch("http://127.0.0.1:1234/v1/chat/completions", {
+    const response = await fetch("http://127.0.0.1:1234/v1/chat/completions", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -46,15 +48,21 @@ export async function getAIResponse(systemContent, userContent) {
                 },
                 {
                     'role': 'user', //User prompts are the questions or problems asked by the user
-                    'content': userContent
+                    'content': userPrompt
+                    // 'content': userContent
+
                 }
             ],
-            'temperature': 0.6, //Temperature varies depending on how creative or precise you want the answer to be, higher (usually than 1) means more creative and lower means more precise
-            'max_tokens': 500, //maximum length of the response prompt, set to -1 for unlimited
-            'stream': true, //so that the info is sent in chunks, not all together
+            'temperature': 0.8, //Temperature varies depending on how creative or precise you want the answer to be, higher (usually than 1) means more creative and lower means more precise
+            'max_tokens': -1, //maximum length of the response prompt, set to -1 for unlimited
+            'stream': false, //so that the info is sent in chunks, not all together
             'contextLength': 0, //Makes it so it can remember past tokens (default 1024)
         })
-    }))
+    })
+
+    const parsed = await response.json()
+
+    return parsed
 }
 
 export async function getCreativeAIResponse(systemContent, userContent) {
