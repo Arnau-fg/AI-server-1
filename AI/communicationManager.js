@@ -20,7 +20,7 @@ export async function getOllamaChatResponse(systemContent, userContent) {
 }
 
 // export async function getAIResponse(systemContent, userContent) {
-    export async function getAIResponse(userPrompt, systemPrompt) {
+        export async function getAIResponse(userPrompt, systemPrompt) {
 
 
     // const setProgrammingLanguage = 'JavaScript'
@@ -59,11 +59,8 @@ export async function getOllamaChatResponse(systemContent, userContent) {
             'contextLength': 0, //Makes it so it can remember past tokens (default 1024)
         })
     })
+};
 
-    const parsed = await response.json()
-
-    return parsed
-}
 export async function getAIQuiz(userPrompt, systemPrompt) {
 
     const response = await fetch("http://127.0.0.1:1234/v1/chat/completions", {
